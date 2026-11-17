@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reliable Care – Family portal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230E4A54'/%3E%3Cpath d='M20 28c-6-4-9-7-9-11 0-3 2-5 5-5 2 0 3 1 4 2 1-1 2-2 4-2 3 0 5 2 5 5 0 4-3 7-9 11z' fill='%23F2A541'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caladea:wght@700&family=Carlito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Carlito',Calibri,'Segoe UI',sans-serif;color:#24383B;background:#EAF3F3;font-size:18px;line-height:1.5}
+h1,h2,h3,h4{font-family:'Caladea',Cambria,Georgia,serif;color:#0E4A54;margin:0}
+a{color:#0E7C86}a:hover{color:#0E4A54}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #F2A541;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div style="width:100%;background:#EAF3F3;font-size:18px;line-height:1.5">
+
+  <!-- HEADER -->
+  <header style="background:#0E4A54">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#ffffff;font-family:'Caladea',Cambria,Georgia,serif;font-weight:700;font-size:22px">
+        <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 15c-3-3.6-8-1.6-8 2.4 0 3 4 6 8 9 4-3 8-6 8-9 0-4-5-6-8-2.4z" fill="#F2A541"/><path d="M4 33h5v-6H4zM9 29h9c2 0 3-1 5-1h4c1 0 1.8 1.2.6 2L20 35H9z" fill="#F2A541"/></svg>
+        Reliable Care
+      </a>
+      <nav aria-label="Main" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px">
+        <a href="index.html" style="color:#ffffff;text-decoration:none;font-size:17px;padding:10px 0">Home</a>
+        <a href="portal.html" style="color:#ffffff;text-decoration:none;font-size:17px;padding:10px 0;border-bottom:3px solid #F2A541">Family portal</a>
+        <span style="display:flex;align-items:center;gap:10px;color:#ffffff;font-size:16px"><span style="width:38px;height:38px;border-radius:50%;background:#F2A541;color:#0E4A54;font-weight:700;display:flex;align-items:center;justify-content:center" aria-hidden="true">Y</span>You (US)</span>
+      </nav>
+    </div>
+  </header>
+
+  <div style="max-width:1240px;margin:0 auto;padding:28px 24px 72px">
+
+    <!-- PARENT STRIP -->
+    <div style="background:#ffffff;border-radius:20px;padding:20px 24px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:16px;flex:1 1 360px;min-width:0">
+        <div style="flex:none;width:60px;height:60px;border-radius:50%;background:#0E4A54;color:#F2A541;font-family:'Caladea',Cambria,Georgia,serif;font-weight:700;font-size:26px;display:flex;align-items:center;justify-content:center" aria-hidden="true">P</div>
+        <div style="min-width:0">
+          <h1 style="font-size:28px;line-height:1.2">Care plan for [PARENT NAME]</h1>
+          <div style="color:#3B5256;font-size:17px">[CITY], India&nbsp;</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <span style="background:#0E7C86;color:#ffffff;font-weight:700;border-radius:999px;padding:6px 16px;font-size:16px">On track this week</span>
+        <span style="background:#E8F2F2;color:#0E4A54;font-weight:700;border-radius:999px;padding:6px 16px;font-size:16px">Sample data</span>
+      </div>
+    </div>
+
+    <!-- PORTAL: SIDEBAR + CONTENT -->
+    <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;align-items:flex-start">
+      <aside style="flex:0 0 250px;max-width:100%;background:#ffffff;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:6px">
+        <div style="padding:4px 12px 8px;color:#3B5256;font-weight:700;font-size:16px">Care overview</div>
+        <div id="tabs" style="display:flex;flex-direction:column;gap:6px"></div>
+        <div style="height:2px;background:#E8F2F2;margin:8px 0"></div>
+        <div style="padding:4px 12px 8px;color:#3B5256;font-weight:700;font-size:16px">Tools</div>
+        <a href="#providers" style="text-decoration:none;color:#0E4A54;font-weight:700;padding:12px 14px;border-radius:10px;border:2px solid #E8F2F2;min-height:20px">Find providers</a>
+        <a href="#rides" style="text-decoration:none;color:#0E4A54;font-weight:700;padding:12px 14px;border-radius:10px;border:2px solid #E8F2F2;min-height:20px">Coordinate a ride</a>
+      </aside>
+      <main id="main" style="flex:999 1 560px;min-width:0;background:#ffffff;border-radius:20px;padding:28px"></main>
+    </div>
+
+    <!-- FIND PROVIDERS -->
+    <section id="providers" style="margin-top:32px;background:#ffffff;border-radius:20px;padding:28px">
+      <h2 style="font-size:32px;line-height:1.15">Find providers</h2>
+      <p style="margin:8px 0 0;max-width:42em">Doctors, clinics and labs near [CITY] that we have checked for licensing, language and reliability. All names below are fictional samples.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;align-items:flex-end">
+        <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:6px">
+          <label for="q" style="font-weight:700;color:#0E4A54">Search by name, clinic or specialty</label>
+          <input id="q" type="text" placeholder="For example, heart or Lotus" style="font:inherit;padding:12px 14px;border:2px solid #7FB3B8;border-radius:10px;min-height:24px;color:#24383B">
+        </div>
+        <div id="specs" role="group" aria-label="Specialty" style="flex:2 1 460px;min-width:0;display:flex;flex-wrap:wrap;gap:8px"></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;align-items:flex-start">
+        <div style="flex:3 1 520px;min-width:0">
+          <div id="provCount" aria-live="polite" style="color:#3B5256;font-size:16px;margin-bottom:10px"></div>
+          <div id="provGrid"></div>
+        </div>
+        <div id="provDetail" style="flex:2 1 340px;min-width:0;background:#0E4A54;border-radius:20px;padding:24px;color:#ffffff"></div>
+      </div>
+    </section>
+
+    <!-- COORDINATE RIDES -->
+    <section id="rides" style="margin-top:32px;background:#ffffff;border-radius:20px;padding:28px">
+      <h2 style="font-size:32px;line-height:1.15">Coordinate a ride to a health visit</h2>
+      <p style="margin:8px 0 0;max-width:42em">Pick the visit and the kind of ride your parent needs. Your coordinator confirms the driver and checks in before pickup.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;align-items:flex-start">
+        <div style="flex:3 1 480px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <div>
+            <h3 style="font-size:21px">1. Choose the visit</h3>
+            <div id="rideVisits" role="group" aria-label="Visit" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+          </div>
+          <div>
+            <h3 style="font-size:21px">2. Choose the ride</h3>
+            <div id="rideTypes" role="group" aria-label="Ride type" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"></div>
+          </div>
+          <div>
+            <h3 style="font-size:21px">3. Choose the pickup time</h3>
+            <div id="rideTimes" role="group" aria-label="Pickup time" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"></div>
+          </div>
+          <div>
+            <h3 style="font-size:21px">4. Add what helps</h3>
+            <div id="rideExtras" role="group" aria-label="Extras" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"></div>
+          </div>
+        </div>
+        <div id="rideSummary" style="flex:2 1 340px;min-width:0;background:#0E4A54;border-radius:20px;padding:24px;color:#ffffff"></div>
+      </div>
+    </section>
+  </div>
+
+  <footer style="background:#0E4A54">
+    <div style="max-width:1240px;margin:0 auto;padding:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:#D6E6E7;font-size:16px">
+      <span>Reliable Care · Supporting aging parents in India from the US</span>
+      <span>Prototype with sample data. Nothing is sent or saved.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var ACC = '#F2A541';
+
+  /* ---------- State ---------- */
+  var S = {
+    tab: 'overview', messageShown: false, escalated: false,
+    consent: {
+      'you-appointments': true, 'you-medications': true, 'you-notes': true, 'you-records': true,
+      'sister-appointments': true, 'sister-medications': false, 'sister-notes': true, 'sister-records': false,
+      'relative-appointments': true, 'relative-medications': false, 'relative-notes': false, 'relative-records': false
+    },
+    query: '', spec: 'All', prov: -1, slot: -1, requested: false, slotError: false,
+    rideVisit: 0, rideType: 0, rideTime: 1, extras: { assist: false, wait: true, back: true }, booked: false
+  };
+
+  /* ---------- Data ---------- */
+  var chipBase = 'padding:6px 14px;border-radius:999px;font-weight:700;font-size:16px;';
+  var chipDone = chipBase + 'background:#0E7C86;color:#ffffff;';
+  var chipWait = chipBase + 'background:#F2A541;color:#0E4A54;';
+
+  var TABS = [
+    ['overview', 'Overview'], ['appointments', 'Appointments'], ['medications', 'Medications'],
+    ['updates', 'Updates'], ['family', 'Family and consent'], ['emergency', 'Emergency']
+  ];
+  var BARS = [['Mon', 2], ['Tue', 5], ['Wed', 3], ['Thu', 4], ['Fri', 1], ['Sat', 3], ['Sun', 2]];
+  var TEAM = [
+    ['C', '[COORDINATOR NAME]', 'Local care coordinator'],
+    ['N', '[CAREGIVER NAME]', 'Visiting caregiver, 3 days a week'],
+    ['D', 'Dr. Meera Iyer', 'General physician (sample)']
+  ];
+  var ACTIVITY = [
+    ['Sat', 'Home visit completed. Your parent was in good spirits.'],
+    ['Thu', 'Blood tests done. Reports uploaded to records.'],
+    ['Wed', 'Missed evening dose followed up by phone.'],
+    ['Tue', 'Cardiology follow-up completed. Ride arranged both ways.']
+  ];
+  var APPTS = [
+    ['Follow-up with cardiologist', 'Tuesday, 10:30 am', 'Ride arranged', 'Completed', chipDone],
+    ['Blood tests', 'Thursday, 8:00 am', 'Escorted by caregiver', 'Completed', chipDone],
+    ['Eye checkup', 'Next week, [DATE]', 'Ride to be booked', 'Needs approval', chipWait]
+  ];
+  var MEDS = [
+    ['[MEDICINE 1]', 'Morning and evening', '1 missed dose, resolved', chipWait],
+    ['[MEDICINE 2]', 'Once daily, morning', 'On schedule', chipDone],
+    ['[MEDICINE 3]', 'Once daily, night', 'On schedule', chipDone]
+  ];
+  var RECORDS = [
+    ['Blood test report', 'Thursday · Kaveri Diagnostics (sample)'],
+    ['Cardiology visit note', 'Tuesday · Lotus Heart Institute (sample)'],
+    ['Current prescriptions', 'Updated Tuesday']
+  ];
+  var UPDATES = [
+    ['Cardiology follow-up', 'Tuesday', 'The visit went as planned. The doctor asked for a repeat blood test and a visit in six weeks.'],
+    ['Medication check-in', 'Thursday', 'Your coordinator called after a missed evening dose. It was taken the next morning, and a reminder was added to the schedule.'],
+    ['Home visit', 'Saturday', 'Your coordinator checked in at home. Your parent is in good spirits and walking comfortably.']
+  ];
+  var CATS = [['appointments', 'Appointments'], ['medications', 'Medications'], ['notes', 'Visit notes'], ['records', 'Records']];
+  var PEOPLE = [
+    ['you', 'You', 'Account holder, US'],
+    ['sister', 'Your sister', 'Family member'],
+    ['relative', 'Local relative', 'Lives near your parent']
+  ];
+  var ESC = [
+    'Your coordinator is alerted and calls your parent.',
+    'If needed, transport to the nearest hospital is arranged.',
+    'You get a message with what is known and what is next.',
+    'Updates continue until the situation is stable.'
+  ];
+  var PROVIDERS = [
+    { name: 'Dr. Meera Iyer', spec: 'General physician', clinic: 'Lotus Family Clinic', distance: '1.8 km', langs: 'English, Hindi, Marathi', rating: '4.8 rating · 212 reviews (sample)', about: 'Family doctor who offers longer visits for older adults and coordinates with specialists.', slots: ['Tue 10:00 am', 'Wed 4:30 pm', 'Fri 11:15 am'] },
+    { name: 'Dr. Arvind Kulkarni', spec: 'Cardiology', clinic: 'Lotus Heart Institute', distance: '3.4 km', langs: 'English, Hindi, Marathi', rating: '4.9 rating · 164 reviews (sample)', about: 'Heart specialist with a focus on blood pressure and follow-up care after hospital stays.', slots: ['Mon 9:30 am', 'Thu 2:00 pm', 'Sat 10:30 am'] },
+    { name: 'Dr. Nandini Rao', spec: 'Eye care', clinic: 'Banyan Eye Care', distance: '2.6 km', langs: 'English, Hindi, Kannada', rating: '4.7 rating · 98 reviews (sample)', about: 'Eye doctor who checks vision, cataracts and diabetes-related eye changes.', slots: ['Tue 3:00 pm', 'Thu 9:00 am', 'Fri 5:00 pm'] },
+    { name: 'Kaveri Diagnostics', spec: 'Diagnostics', clinic: 'Home sample collection', distance: '1.2 km', langs: 'English, Hindi, Marathi', rating: '4.6 rating · 305 reviews (sample)', about: 'Lab that collects blood samples at home and uploads reports the same day.', slots: ['Mon 7:30 am', 'Wed 8:00 am', 'Sat 7:30 am'] },
+    { name: 'Neem Physio Studio', spec: 'Physiotherapy', clinic: 'Home visits available', distance: '4.1 km', langs: 'English, Hindi', rating: '4.7 rating · 76 reviews (sample)', about: 'Physiotherapists who design gentle routines for strength, balance and fall prevention.', slots: ['Tue 5:30 pm', 'Thu 5:30 pm', 'Sat 9:00 am'] },
+    { name: 'Dr. Imran Sheikh', spec: 'Diabetes care', clinic: 'Saffron Wellness Centre', distance: '5.0 km', langs: 'English, Hindi, Urdu', rating: '4.8 rating · 131 reviews (sample)', about: 'Diabetes specialist who reviews blood sugar logs and adjusts care plans with families.', slots: ['Wed 11:00 am', 'Fri 3:30 pm', 'Sat 12:00 pm'] }
+  ];
+  var SPECS = ['All', 'General physician', 'Cardiology', 'Eye care', 'Diagnostics', 'Physiotherapy', 'Diabetes care'];
+  var VISITS = ['Eye checkup · next week, [DATE]', 'Blood test follow-up · Thursday, [DATE]', 'Cardiology repeat test · in six weeks, [DATE]'];
+  var RTYPES = ['Car with driver', 'Wheelchair-accessible vehicle', 'Car with caregiver escort'];
+  var RTIMES = ['8:00 am', '8:30 am', '9:00 am', '9:30 am'];
+  var REXTRAS = [['assist', 'Help getting in and out'], ['wait', 'Driver waits during the visit'], ['back', 'Return trip home']];
+
+  /* ---------- Style helpers ---------- */
+  function pick(on, extra) {
+    return extra + (on ? 'background:#0E7C86;color:#ffffff;border:2px solid #0E7C86;' : 'background:#ffffff;color:#0E4A54;border:2px solid #7FB3B8;');
+  }
+  var statTile = function (n, label) {
+    return '<div style="background:#E8F2F2;border-radius:14px;padding:16px"><div style="font-family:\'Caladea\',Cambria,Georgia,serif;font-weight:700;font-size:34px;color:#0E4A54">' + n + '</div><div>' + label + '</div></div>';
+  };
+  var listRow = function (title, sub, chipStyle, chipText) {
+    return '<div style="background:#E8F2F2;border-radius:14px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between">' +
+      '<div style="flex:1 1 280px;min-width:0"><strong style="color:#0E4A54;font-size:19px">' + title + '</strong><div>' + sub + '</div></div>' +
+      '<span style="' + chipStyle + '">' + chipText + '</span></div>';
+  };
+
+  /* ---------- Renderers ---------- */
+  function renderTabs() {
+    document.getElementById('tabs').innerHTML = TABS.map(function (t) {
+      var on = S.tab === t[0];
+      var st = 'text-align:left;border-radius:10px;padding:12px 14px;font-size:17px;font-weight:700;min-height:44px;' +
+        (on ? 'background:#0E4A54;color:#ffffff;border:2px solid #0E4A54;' : 'background:#ffffff;color:#0E4A54;border:2px solid #E8F2F2;');
+      return '<button type="button" data-k="tab-' + t[0] + '" data-a="tab" data-v="' + t[0] + '" style="' + st + '">' + t[1] + '</button>';
+    }).join('');
+  }
+
+  function overview() {
+    var bars = BARS.map(function (b) {
+      return '<div role="img" aria-label="' + b[0] + ': ' + b[1] + ' care activities" style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%">' +
+        '<span style="font-weight:700;color:#0E4A54;font-size:15px">' + b[1] + '</span>' +
+        '<div style="width:100%;max-width:36px;border-radius:8px 8px 0 0;background:#0E7C86;height:' + (b[1] * 18) + 'px"></div>' +
+        '<span style="font-size:15px;color:#3B5256">' + b[0] + '</span></div>';
+    }).join('');
+    var team = TEAM.map(function (m) {
+      return '<div style="display:flex;gap:12px;align-items:center"><div style="flex:none;width:44px;height:44px;border-radius:50%;background:#0E7C86;color:#ffffff;font-weight:700;display:flex;align-items:center;justify-content:center" aria-hidden="true">' + m[0] + '</div>' +
+        '<div style="min-width:0"><strong style="color:#0E4A54">' + m[1] + '</strong><div style="color:#3B5256;font-size:16px">' + m[2] + '</div></div></div>';
+    }).join('');
+    var act = ACTIVITY.map(function (a) {
+      return '<div style="display:flex;gap:14px;padding:12px 0;border-top:2px solid #E8F2F2"><div style="flex:none;width:90px;color:#3B5256;font-size:16px">' + a[0] + '</div><div style="min-width:0">' + a[1] + '</div></div>';
+    }).join('');
+    return '<div>' +
+      '<h2 style="font-size:30px">Week of this Sunday</h2>' +
+      '<p style="margin:10px 0 0;max-width:40em">Both appointments were kept this week. A blood pressure dose was missed once on Wednesday evening; your coordinator called and confirmed it was taken the next morning.</p>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:20px">' +
+        statTile(2, 'Visits completed') + statTile(1, 'Missed dose, resolved') + statTile(1, 'Ride booked') +
+        '<div style="background:#0E4A54;border-radius:14px;padding:16px;color:#ffffff"><div style="font-family:\'Caladea\',Cambria,Georgia,serif;font-weight:700;font-size:34px;color:' + ACC + '">1</div><div>Needs your approval</div></div>' +
+      '</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:20px;margin-top:24px">' +
+        '<div style="flex:1 1 340px;min-width:0;border:2px solid #E8F2F2;border-radius:16px;padding:20px">' +
+          '<h3 style="font-size:22px">Care activity this week</h3>' +
+          '<p style="margin:4px 0 14px;color:#3B5256;font-size:16px">Visits, calls and check-ins logged by your coordinator</p>' +
+          '<div style="display:flex;gap:10px;align-items:flex-end;height:150px">' + bars + '</div>' +
+        '</div>' +
+        '<div style="flex:1 1 300px;min-width:0;border:2px solid #E8F2F2;border-radius:16px;padding:20px">' +
+          '<h3 style="font-size:22px">Your care team</h3>' +
+          '<div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">' + team + '</div>' +
+          '<button type="button" data-k="msg" data-a="msg" style="margin-top:16px;background:#0E4A54;color:#ffffff;border:0;border-radius:10px;padding:12px 20px;font-weight:700;font-size:17px;min-height:44px">Message coordinator</button>' +
+          (S.messageShown ? '<p role="status" style="margin:12px 0 0;background:#E8F2F2;border-radius:10px;padding:12px 14px">This is a demo, so no message was sent.</p>' : '') +
+        '</div>' +
+      '</div>' +
+      '<h3 style="font-size:22px;margin-top:28px">Recent activity</h3>' +
+      '<div style="display:flex;flex-direction:column;gap:0;margin-top:10px">' + act + '</div>' +
+    '</div>';
+  }
+
+  function appointments() {
+    return '<div><h2 style="font-size:30px">Appointments and transport</h2>' +
+      '<div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">' +
+      APPTS.map(function (a) { return listRow(a[0], a[1] + ' · ' + a[2], a[4], a[3]); }).join('') +
+      '</div>' +
+      '<div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:12px">' +
+      '<a href="#providers" style="background:#0E4A54;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:12px">Find a provider</a>' +
+      '<a href="#rides" style="background:#ffffff;color:#0E4A54;text-decoration:none;font-weight:700;padding:10px 22px;border-radius:12px;border:2px solid #0E7C86">Coordinate a ride</a>' +
+      '</div></div>';
+  }
+
+  function medications() {
+    return '<div><h2 style="font-size:30px">Medications and records</h2>' +
+      '<div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">' +
+      MEDS.map(function (m) { return listRow(m[0], m[1], m[3], m[2]); }).join('') +
+      '</div>' +
+      '<h3 style="font-size:22px;margin-top:24px">Health records</h3>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">' +
+      RECORDS.map(function (r) { return '<div style="border:2px solid #E8F2F2;border-radius:14px;padding:14px 16px"><strong style="color:#0E4A54">' + r[0] + '</strong><div style="color:#3B5256;font-size:16px">' + r[1] + '</div></div>'; }).join('') +
+      '</div></div>';
+  }
+
+  function updates() {
+    return '<div><h2 style="font-size:30px">Verified updates</h2>' +
+      '<div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">' +
+      UPDATES.map(function (u) {
+        return '<div style="background:#E8F2F2;border-radius:14px;padding:16px 20px">' +
+          '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><strong style="color:#0E4A54;font-size:19px">' + u[0] + '</strong><span style="color:#3B5256">' + u[1] + '</span></div>' +
+          '<p style="margin:6px 0 0">' + u[2] + '</p>' +
+          '<div style="margin-top:8px;font-weight:700;color:#0E7C86">Confirmed by your coordinator</div></div>';
+      }).join('') + '</div></div>';
+  }
+
+  function family() {
+    var rows = PEOPLE.map(function (p) {
+      var cells = CATS.map(function (c) {
+        var key = p[0] + '-' + c[0];
+        var on = !!S.consent[key];
+        var st = 'border-radius:10px;padding:8px 14px;font-size:16px;font-weight:700;min-height:44px;' +
+          (on ? 'background:#0E7C86;color:#ffffff;border:2px solid #0E7C86;' : 'background:#ffffff;color:#0E4A54;border:2px solid #7FB3B8;');
+        return '<button type="button" data-k="cons-' + key + '" data-a="cons" data-v="' + key + '" aria-label="' + p[1] + ' can see ' + c[1] + ': ' + (on ? 'on' : 'off') + '. Tap to change." style="' + st + '">' + c[1] + ': ' + (on ? 'On' : 'Off') + '</button>';
+      }).join('');
+      return '<div style="background:#E8F2F2;border-radius:14px;padding:14px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">' +
+        '<div style="flex:1 1 160px;min-width:0"><strong style="color:#0E4A54;font-size:19px">' + p[1] + '</strong><div style="color:#3B5256;font-size:16px">' + p[2] + '</div></div>' + cells + '</div>';
+    }).join('');
+    return '<div><h2 style="font-size:30px">Family and consent</h2>' +
+      '<p style="margin:8px 0 6px;max-width:40em">Your parent decides what each family member can see. Tap to turn sharing on or off.</p>' +
+      '<p style="margin:0 0 16px;color:#0E7C86;font-weight:700">Settings approved by your parent on [DATE]</p>' +
+      '<div style="overflow-x:auto"><div style="min-width:560px;display:flex;flex-direction:column;gap:10px">' + rows + '</div></div></div>';
+  }
+
+  function emergency() {
+    var left = '<div style="flex:1 1 340px;min-width:0"><h2 style="font-size:30px">Emergency escalation</h2>' +
+      '<p style="margin:8px 0 20px;max-width:34em">If something is wrong, one tap alerts your coordinator, who contacts your parent and the nearest hospital.</p>';
+    if (!S.escalated) {
+      left += '<button type="button" data-k="esc" data-a="esc" style="background:#0E4A54;color:#ffffff;border:0;border-radius:12px;padding:16px 28px;font-weight:700;font-size:19px;min-height:52px">Alert my coordinator now</button>';
+    } else {
+      left += '<div role="status" style="background:#E8F2F2;border-radius:14px;padding:16px 20px"><strong style="color:#0E4A54">Alert sent (demo).</strong> Here is what happens next.</div>' +
+        '<button type="button" data-k="escReset" data-a="escReset" style="margin-top:14px;background:#ffffff;color:#0E4A54;border:2px solid #0E7C86;border-radius:12px;padding:10px 22px;font-weight:700;font-size:17px;min-height:44px">Reset demo</button>';
+    }
+    left += '</div>';
+    var right = '';
+    if (S.escalated) {
+      right = '<div style="flex:1 1 340px;min-width:0;background:#0E4A54;border-radius:16px;padding:24px;color:#ffffff;display:flex;flex-direction:column;gap:12px">' +
+        ESC.map(function (t, i) {
+          return '<div style="display:flex;gap:14px;align-items:flex-start"><div style="flex:none;width:36px;height:36px;border-radius:50%;background:' + ACC + ';color:#0E4A54;font-weight:700;display:flex;align-items:center;justify-content:center">' + (i + 1) + '</div><div style="padding-top:4px">' + t + '</div></div>';
+        }).join('') + '</div>';
+    }
+    return '<div style="display:flex;flex-wrap:wrap;gap:24px">' + left + right + '</div>';
+  }
+
+  function renderMain() {
+    var fn = { overview: overview, appointments: appointments, medications: medications, updates: updates, family: family, emergency: emergency }[S.tab];
+    document.getElementById('main').innerHTML = fn();
+  }
+
+  function filtered() {
+    var q = S.query.trim().toLowerCase();
+    var out = [];
+    PROVIDERS.forEach(function (p, i) {
+      var okSpec = S.spec === 'All' || p.spec === S.spec;
+      var hay = (p.name + ' ' + p.clinic + ' ' + p.spec).toLowerCase();
+      if (okSpec && (q === '' || hay.indexOf(q) !== -1)) out.push({ i: i, p: p });
+    });
+    return out;
+  }
+
+  function renderProviders() {
+    document.getElementById('specs').innerHTML = SPECS.map(function (n) {
+      var on = S.spec === n;
+      var st = 'border-radius:999px;padding:9px 16px;font-size:16px;font-weight:700;min-height:44px;' +
+        (on ? 'background:#0E4A54;color:#ffffff;border:2px solid #0E4A54;' : 'background:#ffffff;color:#0E4A54;border:2px solid #7FB3B8;');
+      return '<button type="button" data-k="spec-' + n + '" data-a="spec" data-v="' + n + '" style="' + st + '">' + n + '</button>';
+    }).join('');
+
+    var list = filtered();
+    document.getElementById('provCount').textContent = list.length + (list.length === 1 ? ' provider' : ' providers') + ' with Available Appointments Nearby';
+    var grid = document.getElementById('provGrid');
+    if (list.length === 0) {
+      grid.innerHTML = '<div style="background:#E8F2F2;border-radius:14px;padding:20px"><strong style="color:#0E4A54">No providers match.</strong> Clear the search or choose All.</div>';
+    } else {
+      grid.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">' +
+        list.map(function (x) {
+          var p = x.p, sel = S.prov === x.i;
+          var card = 'border-radius:16px;padding:18px;display:flex;flex-direction:column;' + (sel ? 'border:3px solid #0E7C86;background:#E8F2F2;' : 'border:2px solid #E8F2F2;background:#ffffff;');
+          var btn = 'margin-top:14px;border-radius:10px;padding:10px 18px;font-weight:700;font-size:16px;min-height:44px;' +
+            (sel ? 'background:#0E7C86;color:#ffffff;border:2px solid #0E7C86;' : 'background:#ffffff;color:#0E4A54;border:2px solid #0E7C86;');
+          return '<div style="' + card + '">' +
+            '<div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3 style="font-size:20px;line-height:1.2">' + p.name + '</h3><span style="flex:none;background:#0E7C86;color:#ffffff;font-weight:700;font-size:14px;border-radius:999px;padding:3px 10px">Vetted</span></div>' +
+            '<div style="color:#0E4A54;font-weight:700;margin-top:6px">' + p.spec + '</div>' +
+            '<div style="color:#3B5256;font-size:16px">' + p.clinic + ' · ' + p.distance + '</div>' +
+            '<div style="color:#3B5256;font-size:16px;margin-top:4px">' + p.langs + '</div>' +
+            '<div style="margin-top:8px;font-size:16px">' + p.rating + '</div>' +
+            '<button type="button" data-k="prov-' + x.i + '" data-a="prov" data-v="' + x.i + '" style="' + btn + '">' + (sel ? 'Selected' : 'View times') + '</button></div>';
+        }).join('') + '</div>';
+    }
+
+    var d = document.getElementById('provDetail');
+    if (S.prov < 0) {
+      d.innerHTML = '<h3 style="color:#ffffff;font-size:24px">Choose a provider</h3><p style="color:#D6E6E7;margin:8px 0 0">Select a provider to see their details and available times.</p>';
+      return;
+    }
+    var p = PROVIDERS[S.prov];
+    var slots = p.slots.map(function (label, i) {
+      var on = S.slot === i;
+      var st = 'border-radius:10px;padding:9px 16px;font-size:16px;font-weight:700;min-height:44px;' +
+        (on ? 'background:#F2A541;color:#0E4A54;border:2px solid #F2A541;' : 'background:transparent;color:#ffffff;border:2px solid #7FB3B8;');
+      return '<button type="button" data-k="slot-' + i + '" data-a="slot" data-v="' + i + '" style="' + st + '">' + label + '</button>';
+    }).join('');
+    var tail;
+    if (S.requested) {
+      tail = '<div role="status" style="margin-top:18px;background:#1A5F6B;border-radius:12px;padding:14px 16px"><strong style="color:' + ACC + '">Request sent (demo).</strong> Your coordinator will confirm with the clinic and ask you to approve. <a href="#rides" style="color:#ffffff;font-weight:700">Plan a ride</a></div>';
+    } else {
+      tail = '<button type="button" data-k="req" data-a="req" style="margin-top:18px;background:' + ACC + ';color:#0E4A54;border:0;border-radius:12px;padding:13px 24px;font-weight:700;font-size:18px;min-height:48px">Request this time</button>' +
+        (S.slotError ? '<p role="alert" style="margin:10px 0 0;color:' + ACC + ';font-weight:700">Choose a time first.</p>' : '');
+    }
+    d.innerHTML = '<h3 style="color:#ffffff;font-size:26px">' + p.name + '</h3>' +
+      '<div style="color:' + ACC + ';font-weight:700;margin-top:4px">' + p.spec + '</div>' +
+      '<div style="color:#D6E6E7;margin-top:2px">' + p.clinic + ' · ' + p.distance + '</div>' +
+      '<p style="color:#D6E6E7;margin:12px 0 0;font-size:17px">' + p.about + '</p>' +
+      '<div style="margin-top:16px;font-weight:700">Available times</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">' + slots + '</div>' + tail;
+  }
+
+  function renderRides() {
+    document.getElementById('rideVisits').innerHTML = VISITS.map(function (label, i) {
+      return '<button type="button" data-k="rv-' + i + '" data-a="rvisit" data-v="' + i + '" style="' + pick(S.rideVisit === i, 'text-align:left;border-radius:12px;padding:12px 16px;font-size:17px;font-weight:700;min-height:48px;') + '">' + label + '</button>';
+    }).join('');
+    document.getElementById('rideTypes').innerHTML = RTYPES.map(function (label, i) {
+      return '<button type="button" data-k="rt-' + i + '" data-a="rtype" data-v="' + i + '" style="' + pick(S.rideType === i, 'border-radius:12px;padding:12px 18px;font-size:17px;font-weight:700;min-height:48px;') + '">' + label + '</button>';
+    }).join('');
+    document.getElementById('rideTimes').innerHTML = RTIMES.map(function (label, i) {
+      return '<button type="button" data-k="rtm-' + i + '" data-a="rtime" data-v="' + i + '" style="' + pick(S.rideTime === i, 'border-radius:12px;padding:12px 18px;font-size:17px;font-weight:700;min-height:48px;') + '">' + label + '</button>';
+    }).join('');
+    document.getElementById('rideExtras').innerHTML = REXTRAS.map(function (x) {
+      var on = !!S.extras[x[0]];
+      return '<button type="button" data-k="rx-' + x[0] + '" data-a="rextra" data-v="' + x[0] + '" aria-label="' + x[1] + ': ' + (on ? 'on' : 'off') + '. Tap to change." style="' + pick(on, 'border-radius:12px;padding:12px 18px;font-size:17px;font-weight:700;min-height:48px;') + '">' + x[1] + ': ' + (on ? 'On' : 'Off') + '</button>';
+    }).join('');
+
+    var chosen = REXTRAS.filter(function (x) { return S.extras[x[0]]; }).map(function (x) { return x[1]; });
+    var box = function (label, val) {
+      return '<div style="background:#1A5F6B;border-radius:12px;padding:12px 16px"><div style="color:' + ACC + ';font-weight:700;font-size:16px">' + label + '</div>' + val + '</div>';
+    };
+    var html = '<h3 style="color:#ffffff;font-size:24px">Ride summary</h3>' +
+      '<div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">' +
+      box('Visit', VISITS[S.rideVisit]) + box('Ride', RTYPES[S.rideType]) +
+      box('Pickup', RTIMES[S.rideTime] + ' at home') + box('Includes', chosen.length ? chosen.join(', ') : 'No extras') + '</div>';
+    if (!S.booked) {
+      html += '<button type="button" data-k="book" data-a="book" style="margin-top:18px;background:' + ACC + ';color:#0E4A54;border:0;border-radius:12px;padding:13px 24px;font-weight:700;font-size:18px;min-height:48px">Book this ride</button>' +
+        '<p style="color:#D6E6E7;margin:10px 0 0;font-size:16px">Cost: [CUSTOMIZED TO YOUR PLAN]</p>';
+    } else {
+      var steps = [
+        'Ride requested and sent to your coordinator.',
+        'Driver confirmed the day before, and your parent gets a call.',
+        'Pickup at ' + RTIMES[S.rideTime] + '. You get a message when it starts.',
+        'Drop-off at the clinic, with a check-in by your coordinator.',
+        'Visit confirmed and added to your weekly update.'
+      ];
+      html += '<div role="status" style="margin-top:18px;background:#1A5F6B;border-radius:12px;padding:14px 16px"><strong style="color:' + ACC + '">Ride requested (demo).</strong> Driver: [DRIVER NAME], vehicle [PLATE NUMBER].</div>' +
+        '<div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">' +
+        steps.map(function (t, i) {
+          return '<div style="display:flex;gap:12px;align-items:flex-start"><div style="flex:none;width:30px;height:30px;border-radius:50%;background:' + ACC + ';color:#0E4A54;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">' + (i + 1) + '</div><div style="padding-top:2px;font-size:17px">' + t + '</div></div>';
+        }).join('') + '</div>' +
+        '<button type="button" data-k="rreset" data-a="rreset" style="margin-top:16px;background:#ffffff;color:#0E4A54;border:0;border-radius:10px;padding:10px 20px;font-weight:700;font-size:17px;min-height:44px">Plan another ride</button>';
+    }
+    document.getElementById('rideSummary').innerHTML = html;
+  }
+
+  /* Re-render everything and keep keyboard focus on the same control */
+  function renderAll() {
+    var active = document.activeElement;
+    var key = active && active.getAttribute ? active.getAttribute('data-k') : null;
+    renderTabs(); renderMain(); renderProviders(); renderRides();
+    if (key) {
+      var el = document.querySelector('[data-k="' + key + '"]');
+      if (el) el.focus();
+    }
+  }
+
+  /* ---------- Events ---------- */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-a]');
+    if (!el) return;
+    var a = el.getAttribute('data-a');
+    var v = el.getAttribute('data-v');
+    switch (a) {
+      case 'tab': S.tab = v; break;
+      case 'msg': S.messageShown = true; break;
+      case 'esc': S.escalated = true; break;
+      case 'escReset': S.escalated = false; break;
+      case 'cons': S.consent[v] = !S.consent[v]; break;
+      case 'spec': S.spec = v; S.prov = -1; S.slot = -1; S.requested = false; S.slotError = false; break;
+      case 'prov': S.prov = parseInt(v, 10); S.slot = -1; S.requested = false; S.slotError = false; break;
+      case 'slot': S.slot = parseInt(v, 10); S.requested = false; S.slotError = false; break;
+      case 'req':
+        if (S.slot < 0) S.slotError = true; else { S.requested = true; S.slotError = false; }
+        break;
+      case 'rvisit': S.rideVisit = parseInt(v, 10); S.booked = false; break;
+      case 'rtype': S.rideType = parseInt(v, 10); S.booked = false; break;
+      case 'rtime': S.rideTime = parseInt(v, 10); S.booked = false; break;
+      case 'rextra': S.extras[v] = !S.extras[v]; S.booked = false; break;
+      case 'book': S.booked = true; break;
+      case 'rreset':
+        S.booked = false; S.rideVisit = 0; S.rideType = 0; S.rideTime = 1; S.extras = { assist: false, wait: true, back: true };
+        break;
+      default: return;
+    }
+    renderAll();
+  });
+
+  document.getElementById('q').addEventListener('input', function (e) {
+    S.query = e.target.value;
+    S.prov = -1; S.slot = -1; S.requested = false; S.slotError = false;
+    renderProviders();
+  });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
